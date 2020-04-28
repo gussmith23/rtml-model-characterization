@@ -16,7 +16,7 @@ RUN echo deb http://apt.llvm.org/buster/ llvm-toolchain-buster-8 main \
 RUN cd /root && git clone https://github.com/gussmith23/tvm.git tvm --recursive
 WORKDIR /root/tvm
 RUN git fetch
-RUN git checkout 6781b2e05e6c4ff28966b4ea3535790f9cd0cab9
+RUN git checkout ea7d0994be48f7782c5f166dd6f28aaf6e61e310
 RUN git submodule sync && git submodule update
 RUN echo 'set(USE_LLVM llvm-config-8)' >> config.cmake
 RUN echo 'set(USE_RPC ON)' >> config.cmake
@@ -40,7 +40,7 @@ COPY ./requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 
 ## Set up example script
-#WORKDIR /root
-#COPY ./3la-ir-example.py ./3la-ir-example.py
-#
-#CMD ["python3", "3la-ir-example.py"]
+WORKDIR /root
+COPY ./generate-list.py ./generate-list.py
+
+CMD ["python3", "generate-list.py"]
