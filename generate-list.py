@@ -58,8 +58,4 @@ models_and_operators = pd.DataFrame.from_records(summary_records,
                                                  summary_column_names,
                                                  index='model')
 
-print(models_and_operators)
-
-print()
-print('As csv:')
 print(models_and_operators.to_csv())
