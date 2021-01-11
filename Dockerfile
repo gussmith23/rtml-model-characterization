@@ -16,7 +16,7 @@ RUN echo deb http://apt.llvm.org/buster/ llvm-toolchain-buster-8 main \
 RUN cd /root && git clone https://github.com/gussmith23/tvm.git tvm --recursive
 WORKDIR /root/tvm
 RUN git fetch
-RUN git checkout ea7d0994be48f7782c5f166dd6f28aaf6e61e310
+RUN git checkout 83a4ef25f8c2778f061f5513ec1a3fe87810a5a1
 RUN git submodule sync && git submodule update
 RUN echo 'set(USE_LLVM llvm-config-8)' >> config.cmake
 RUN echo 'set(USE_RPC ON)' >> config.cmake
