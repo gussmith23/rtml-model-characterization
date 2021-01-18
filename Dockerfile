@@ -41,6 +41,9 @@ RUN pip3 install -r requirements.txt
 
 ## Set up example script
 WORKDIR /root
-COPY "./Gathering Data on Relay Models for Guiding Hardware Design.ipynb" "Gathering Data on Relay Models for Guiding Hardware Design.ipynb"
+COPY [                                                                     \
+     "./Gathering Data on Relay Models for Guiding Hardware Design.ipynb", \
+     "Gathering Data on Relay Models for Guiding Hardware Design.ipynb"    \
+     ]
 
-CMD ["jupyter", "notebook", "--ip 0.0.0.0", "--no-browser", "--allow-root", "./Gathering Data on Relay Models for Guiding Hardware Design.ipynb"]
+CMD ["jupyter", "notebook", "--ip", "0.0.0.0", "--no-browser", "--allow-root"]
