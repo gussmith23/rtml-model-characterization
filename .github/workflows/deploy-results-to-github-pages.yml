@@ -18,7 +18,7 @@ jobs:
       - run: mkdir results
       - env: 
           CID: ${{steps.run_docker.outputs.CID}}
-        run: docker cp $(CID):/root/Gathering\ Data\ on\ Relay\ Models\ for\ Guiding\ Hardware\ Design.html results/index.html
+        run: docker cp $CID:/root/Gathering\ Data\ on\ Relay\ Models\ for\ Guiding\ Hardware\ Design.html results/index.html
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v2
