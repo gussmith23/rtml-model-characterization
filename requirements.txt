@@ -7,3 +7,4 @@ xgboost==0.90
 pandas==0.25.3
 nbconvert==5.6.1
 notebook==6.0.2
+pytest==5.2.1
