@@ -1,0 +1,29 @@
+name: Deploy Results to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy-results-to-github-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build --tag relay-model-profiling .
+      - id: run_docker
+        run: echo "::set-output name=CID::$(docker run relay-model-profiling jupyter nbconvert --execute --to html Gathering\ Data\ on\ Relay\ Models\ for\ Guiding\ Hardware\ Design.ipynb)"
+      - run: mkdir results
+      - env: 
+          CID: ${{steps.run_docker.outputs.CID}}
+        run: docker cp $(CID):/root/Gathering\ Data\ on\ Relay\ Models\ for\ Guiding\ Hardware\ Design.html results/index.html
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          target_branch: gh-pages
+          build_dir: results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
