@@ -6,5 +6,5 @@ tornado==6.0.3
 xgboost==0.90
 pandas==0.25.3
 nbconvert==5.6.1
-notebook==6.4.1
+notebook==6.4.10
 pytest==5.2.1
